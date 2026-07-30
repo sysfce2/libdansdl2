@@ -388,8 +388,6 @@ void ttf_representation::create_texture_internal(
 		get_texture()->replace(*cnv);
 	}
 
-	SDL_SaveBMP(cnv->get_surface(), "lol.bmp");
-
 	set_blend(representation::blends::alpha);
 	set_clip({0,0, (unsigned)canvas_w, (unsigned)canvas_h});
 	//This must be triggered: dimensions would be left at 0 and cameras would fail.
