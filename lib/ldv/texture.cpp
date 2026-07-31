@@ -107,7 +107,8 @@ void texture::load(
 
 	if(SDL_ISPIXELFORMAT_INDEXED(const_cast<SDL_Surface*>(surface)->format->format)) {
 
-#ifdef LIBDANSDL2_DEBUG
+#if defined (LIBDANSDL2_DEBUG) && defined (LIBDANSDL2_DEBUG_EXTRA_LOG)
+
 		lm::log(ldt::log_lsdl::get()).debug()<<"detected indexed surface, will convert to RGBA32"<<std::endl;
 #endif
 
@@ -126,7 +127,8 @@ void texture::load(
 
 	if(surface->format->BytesPerPixel==4) {
 
-#ifdef LIBDANSDL2_DEBUG
+#if defined (LIBDANSDL2_DEBUG) && defined (LIBDANSDL2_DEBUG_EXTRA_LOG)
+
 		lm::log(ldt::log_lsdl::get()).debug()<<"detected a surface of 4bpp, will map it to RGBA32"<<std::endl;
 #endif
 
@@ -145,8 +147,10 @@ void texture::load(
 	
 	if(surface->format->BytesPerPixel==3) {
 
-#ifdef LIBDANSDL2_DEBUG
+#if defined (LIBDANSDL2_DEBUG) && defined (LIBDANSDL2_DEBUG_EXTRA_LOG)
+
 		lm::log(ldt::log_lsdl::get()).debug()<<"detected a surface of 3bpp, will map it to RGB24"<<std::endl;
+
 #endif
 
 		SDL_PixelFormat * targetformat=SDL_AllocFormat(SDL_PIXELFORMAT_RGB24);

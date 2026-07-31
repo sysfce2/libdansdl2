@@ -4,6 +4,7 @@ project(libdansdl2)
 option(BUILD_STATIC "generate static release" ON)
 option(BUILD_SHARED "generate shared release" ON)
 option(BUILD_DEBUG "set the release as debug" OFF)
+option(BUILD_DEBUG_EXTRA_LOG "Add extra stuff to debug logs" OFF)
 option(BUILD_TESTS "Build test code" OFF)
 
 #library version and naming...
@@ -73,6 +74,11 @@ if(${BUILD_STATIC})
 	if(${BUILD_DEBUG}) 
 
 		target_compile_definitions(dansdl2_static PUBLIC "-DLIBDANSDL2_DEBUG")
+
+		if(${BUILD_DEBUG_EXTRA_LOG})
+
+			target_compile_definitions(dansdl2_static PUBLIC "-DLIBDANSDL2_DEBUG_EXTRA_LOG")
+		endif()
 	endif()
 endif()
 
@@ -88,6 +94,11 @@ if(${BUILD_SHARED})
 	if(${BUILD_DEBUG}) 
 
 		target_compile_definitions(dansdl2_shared PUBLIC "-DLIBDANSDL2_DEBUG")
+
+		if(${BUILD_DEBUG_EXTRA_LOG})
+
+			target_compile_definitions(dansdl2_shared PUBLIC "-DLIBDANSDL2_DEBUG_EXTRA_LOG")
+		endif()
 	endif()
 endif()
 
