@@ -11,6 +11,10 @@ Changes will be documented under Added, Changed, Deprecated, Removed, Fixed or S
 ## Unreleased
 ### Pending
 
+## [V3.2.5]: 2026-09-12
+### Added:
+- Added epsilon to box collision methods.
+
 ## [V3.2.5]: 2025-08-03
 ### Added:
 - Added from_angle method for vectors.

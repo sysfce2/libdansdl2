@@ -55,6 +55,8 @@ class audio_controller
 	void                    resume_sound(); //Restarts all sounds.
 	void                    play_music(const music_struct&, int=-1);
 	void                    stop_music(int =0);
+	//!Main gain for all channels. This is meant to be the factor that the end
+	//!user adjusts.
 	void                    set_main_sound_volume(int);
 	void                    set_sound_volume(int p_vol, int pchannel); //p_vol de 0 a 128.
 	void                    add_music_stop_callback(const std::string&, audio_callback_interface&);
@@ -62,8 +64,13 @@ class audio_controller
 	void                    pause_music();
 	void                    resume_music();
 
-	//!Sets the master music volume.
+	//!Sets the "mix" of the volume for the application. This is not meant to
+	//!be adjusted by the user, but used as an app-wide switch meant to control
+	//!how loud music is based in the app resources themselves.
 	void                    set_main_music_volume(int v);
+	//!Sets the user music volume. This is meant to be the factor that the 
+	//!end user adjusts when they go into some menu and set "music volume" to
+	//!some value.
 	void                    set_music_volume(int);
 	//!Indicates whether music is playing.
 	bool                    is_music_playing() const {return music_playing;}

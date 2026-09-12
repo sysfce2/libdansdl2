@@ -180,6 +180,13 @@ class box
 		//ldt::center_vertically(*this, _obstacle);
 	}
 
+	//!Returns true if this box collides with the given box, edges touching 
+	//!are not collisions, uses a epsilon value for precision errors.
+	bool 			collides_with(const box& _c, T _epsilon) const {
+
+		return ldt::rects_overlap(origin.x, origin.y, w, h, _c.origin.x, _c.origin.y, _c.w, _c.h, _epsilon);
+	}
+
 	//!Returns true if this box collides with the given box  The second
 	//!parameter is legacy as it comes, governing whether a mere coincidence
 	//!of edge values should be considered a collision.
